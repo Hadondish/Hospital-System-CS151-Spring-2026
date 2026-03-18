@@ -1,6 +1,6 @@
 // Kevin Tran
 // surgeryBill.java
-
+package hospital;
 /* Surgery bill is connected and is used for calculation for surgery bills and has support for anesthesia */
 import java.util.Map;
 
