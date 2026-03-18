@@ -1,5 +1,6 @@
 package hospital;
 
+import java.time.LocalDate;
 import java.util.*;
 
 public class HospitalSystem {
@@ -54,8 +55,10 @@ public class HospitalSystem {
 
         System.out.println("Name: ");
         String name = scanner.nextLine();
+        System.out.println("Date of Birth (YYYY-MM-DD): ");
+        String dob = scanner.nextLine();
+        LocalDate dateOfBirth = LocalDate.parse(dob);
         System.out.println("Age: ");
-
         int age = scanner.nextInt();
         scanner.nextLine(); // Consume newline
 
@@ -65,7 +68,7 @@ public class HospitalSystem {
         System.out.println("New Patient Id: ");
         String id = scanner.nextLine();
 
-        Patient newPatient = new Patient(name, age, gender, id);    // TODO: Add more details to patient constructor and registration process
+        Patient newPatient = new Patient(name, age, dateOfBirth, id, Patient.Status.ACTIVE, null, new ArrayList<>());    // TODO: Add more details to patient constructor and registration process
         patientsById.put(newPatient.getId(), newPatient);
     }
 
