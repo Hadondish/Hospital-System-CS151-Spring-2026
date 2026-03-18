@@ -26,7 +26,7 @@ public class Pharmacy extends Department {
 
     public String listMedications() {
         if (medications.isEmpty()) {
-            return "No Medication Available";
+            return "No Medications Available";
         }
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < medications.size(); i++) {
@@ -44,7 +44,7 @@ public class Pharmacy extends Department {
     }
 
     public void fillPrescription(String patientId, Medication medName) {
-        System.out.println("Filling prescription: " + medName.getDescription() + " to -> " + patientId);
+        System.out.println("Filling prescription: " + medName.getDescription() + " --> " + patientId);
     }
 
     public void restockMedication(Medication medName, int amount) {
