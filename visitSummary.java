@@ -1,15 +1,17 @@
 // Kevin Tran
-// visitSummary
+// VisitSummary.java
+
+package hospital;
 import java.util.ArrayList;
 import java.util.List;
 
 
 /*
-    Visit Summary shows the details about a patient's specific hospital visit and the billable costs
+    Visit Summary shows the details about a patient's specific hospital visit and their billable costs
     
 */
 
-public class visitSummary {
+public class VisitSummary {
     
     // Declare Variables
     private String visitId;
@@ -19,7 +21,7 @@ public class visitSummary {
     private List<billable> billable_charges;
 
 
-public visitSummary(String visitId, String patient) {
+public VisitSummary(String visitId, String patient) {
     this.visitId = visitId;
     this.patientId = patientId;
     this.billable_charges = new ArrayList<>();

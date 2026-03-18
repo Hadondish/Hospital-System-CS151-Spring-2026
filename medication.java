@@ -1,8 +1,9 @@
 // Kevin Tran
 // Medication.java
+package hospital;
 
 /* Medication class is used to get information about medications such as medication names, medication costs, and whether insurance is provided. */
-public class medication implements billable {
+public class Medication implements billable {
     // Declare variables
     private String medicationName;
 
