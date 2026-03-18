@@ -22,3 +22,5 @@ public class VisitSummary {
     @Override
     public String toString() { return visitId; }
 }
+
+
