@@ -1,3 +1,9 @@
+# Hospital-System-CS151-Spring-2026
+
+# Overview
+
+# Design
+```mermaid
 ---
 config:
   theme: neutral
@@ -160,18 +166,6 @@ direction LR
 	    +isCoveredByInsurance() boolean
     }
 
-    class FullCapacityException {
-	    +FullCapacityException(message: String)
-    }
-
-    class SchedulingConflictException {
-	    +SchedulingConflictException(message: String)
-    }
-
-    class NotFoundException {
-	    +NotFoundException(message: String)
-    }
-
 	<<abstract>> Department
 	<<interface>> Billable
 
@@ -195,10 +189,10 @@ direction LR
     VisitSummary o-- Billable
     Billable <.. Medication
     Billable <.. SurgeryBill
+```
+# Installation Instructions
 
-    HospitalSystem ..> FullCapacityException
-    HospitalSystem ..> SchedulingConflictException
-    HospitalSystem ..> NotFoundException
-    Appointment ..> SchedulingConflictException
-    Patient ..> FullCapacityException
-    StaffMember ..> FullCapacityException
+# Usage
+
+# Contributions
+
