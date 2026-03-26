@@ -1,6 +1,5 @@
 package hospital;
 
-import java.time.LocalDate;
 import java.util.*;
 
 public class HospitalSystem {
@@ -10,22 +9,19 @@ public class HospitalSystem {
     private Map<String, Patient> patientsById;
     private Map<String, StaffMember> staffById;
     private Map<String, Appointment> appointmentsById;
-    private static int patientCount = 0;
 
     public HospitalSystem() {
         this.departments = new ArrayList<>();
         this.patientsById = new HashMap<>();
         this.staffById = new HashMap<>();
         this.appointmentsById = new HashMap<>();
-        this.patientCount = 0;
     }
 
-    public HospitalSystem(ArrayList<Department> departments, Map<String, Patient> patientsById, Map<String, StaffMember> staffById, Map<String, Appointment> appointmentsById, int patientCount) {
+    public HospitalSystem(ArrayList<Department> departments, Map<String, Patient> patientsById, Map<String, StaffMember> staffById, Map<String, Appointment> appointmentsById) {
         this.departments = departments;
         this.patientsById = patientsById;
         this.staffById = staffById;
         this.appointmentsById = appointmentsById;
-        this.patientCount = patientCount;
     }
 
     public void addDepartment(Department dept) {
@@ -42,55 +38,39 @@ public class HospitalSystem {
         throw new NotFoundException("Department not found in System: " + name);
     }
 
-    public void registerPatient() throws FullCapacityException {
-        if (patientCount >= MAX_INSTANCES) {
-            throw new FullCapacityException("Cannot register patient, system at full capacity");
+    public void registerPatient(Patient p) throws FullCapacityException {
+        if (patientsById.size() >= MAX_INSTANCES) {
+            throw new FullCapacityException("Cannot register patient, system at full capacity.");
         }
 
-        Scanner scanner = new Scanner(System.in);
+        if (patientsById.containsKey(p.getPatientId())) {
+            System.out.println("Patient with ID " + p.getPatientId() + " already exists.");
+            return;
+        }
 
-        System.out.println("Registering new patient...");
-
-        System.out.println("Enter patient details:");
-
-        System.out.println("Name: ");
-        String name = scanner.nextLine();
-        System.out.println("Date of Birth (YYYY-MM-DD): ");
-        String dob = scanner.nextLine();
-        LocalDate dateOfBirth = LocalDate.parse(dob);
-        System.out.println("Age: ");
-        int age = scanner.nextInt();
-        scanner.nextLine(); // Consume newline
-
-        System.out.println("Gender: ");
-        String gender = scanner.nextLine();
-
-        System.out.println("New Patient Id: ");
-        String id = scanner.nextLine();
-
-        Patient newPatient = new Patient(name, age, dateOfBirth, id, Patient.Status.ACTIVE, null, new ArrayList<>());    // TODO: Add more details to patient constructor and registration process
-        patientsById.put(newPatient.getId(), newPatient);
+        patientsById.put(p.getPatientId(), p);
     }
 
     public void hireStaff(StaffMember s) throws FullCapacityException {
-        if (staffById.containsKey(s.getId())) {
-            System.out.println("Staff member with ID " + s.getId() + " already exists. Cannot hire.");
+        if (staffById.containsKey(s.getEmployeeId())) {
+            System.out.println("Staff member with ID " + s.getEmployeeId() + " already exists. Cannot hire.");
             return;
         } else if (staffById.size() >= MAX_INSTANCES) {
             throw new FullCapacityException("Cannot hire staff, system at full capacity.");
         } else {
             // create a new staff member and add to system
-            staffById.put(s.getId(), s);
+            staffById.put(s.getEmployeeId(), s);
         }
     }
 
     public void scheduleAppointment(Appointment a) throws SchedulingConflictException {
-        if (appointmentsById.containsKey(a.getId())) {
-            throw new SchedulingConflictException("Appointment with ID " + a.getId() + " already exists. Cannot schedule.");
+        for (Appointment existing : appointmentsById.values()) {
+            if (existing.getProvider().equals(a.getProvider()) &&
+                existing.getDateTime().equals(a.getDateTime())) {
+                throw new SchedulingConflictException("Provider already booked at that time.");
+            }
         }
-
-        appointmentsById.put(a.getId(), a);
-        a.setStatus(Appointment.Status.SCHEDULED);
+        appointmentsById.put(a.getAppointmentId(), a);
     }
 
 
@@ -137,25 +117,36 @@ public class HospitalSystem {
         if (!patientsById.containsKey(patientId)) {
             throw new NotFoundException("Patient with ID " + patientId + " not found.");
         } else {
-            patientsById.get(patientId).listAppointments(); // TODO: Implement method to list appointments for patient
+            for (Appointment a : appointmentsById.values()) {
+                if (a.matches(patientId)) {
+                    System.out.println(a);
+                }
+            }
         }
     }
+
     public void listAppointmentsForStaff(String employeeId) throws NotFoundException {
         if (!staffById.containsKey(employeeId)) {
             throw new NotFoundException("Staff member with ID " + employeeId + " not found.");
         } else {
-            staffById.get(employeeId).listAppointments(); // TODO: Implement method to list appointments for staff member
-        }
-    }
-    public void listAppointmentsForDepartment(String deptId) throws NotFoundException {
-        for (Department dept : departments) {
-            if (dept.getId().equals(deptId)) {
-                dept.listAppointments(); // TODO: Implement method to list appointments for department
-                return;
+            for (Appointment a : appointmentsById.values()) {
+                if (a.matches(employeeId)) {
+                    System.out.println(a);
+                }
             }
         }
-        throw new NotFoundException("Department with ID " + deptId + " not found.");
     }
+
+  public void listAppointmentsForDepartment(String deptName) throws NotFoundException {
+        Department dept = getDepartment(deptName);
+
+        for (Appointment a : appointmentsById.values()) {
+            if (a.getDepartment().equals(dept)) {
+                System.out.println(a);
+            }
+        }
+
+        }
 
 }
 

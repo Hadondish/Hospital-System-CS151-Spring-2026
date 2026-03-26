@@ -41,7 +41,6 @@ public class StaffMember {
 
     public void terminateEmployment() {
         this.isEmployed = false;
-        getDepartment().removeStaff(this);
     }
 
     public void changeRole(String newRole) {
