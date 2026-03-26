@@ -4,12 +4,6 @@
 
 # Design
 ```mermaid
----
-config:
-  theme: neutral
-  layout: elk
-  look: neo
----
 classDiagram
 direction LR
     class HospitalSystem {
@@ -166,6 +160,18 @@ direction LR
 	    +isCoveredByInsurance() boolean
     }
 
+    class FullCapacityException {
+	    +FullCapacityException(message: String)
+    }
+
+    class SchedulingConflictException {
+	    +SchedulingConflictException(message: String)
+    }
+
+    class NotFoundException {
+	    +NotFoundException(message: String)
+    }
+
 	<<abstract>> Department
 	<<interface>> Billable
 
@@ -189,10 +195,17 @@ direction LR
     VisitSummary o-- Billable
     Billable <.. Medication
     Billable <.. SurgeryBill
+
+    HospitalSystem ..> FullCapacityException
+    HospitalSystem ..> SchedulingConflictException
+    HospitalSystem ..> NotFoundException
+    Appointment ..> SchedulingConflictException
+    Patient ..> FullCapacityException
+    StaffMember ..> FullCapacityException
 ```
+
 # Installation Instructions
 
 # Usage
 
 # Contributions
-
