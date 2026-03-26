@@ -1,3 +1,9 @@
+# Hospital-System-CS151-Spring-2026
+
+# Overview
+
+# Design
+```mermaid
 ---
 config:
   theme: neutral
@@ -202,3 +208,10 @@ direction LR
     Appointment ..> SchedulingConflictException
     Patient ..> FullCapacityException
     StaffMember ..> FullCapacityException
+```
+# Installation Instructions
+
+# Usage
+
+# Contributions
+
