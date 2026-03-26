@@ -4,12 +4,6 @@
 
 # Design
 ```mermaid
----
-config:
-  theme: neutral
-  layout: elk
-  look: neo
----
 classDiagram
 direction LR
     class HospitalSystem {
@@ -209,9 +203,9 @@ direction LR
     Patient ..> FullCapacityException
     StaffMember ..> FullCapacityException
 ```
+
 # Installation Instructions
 
 # Usage
 
 # Contributions
-

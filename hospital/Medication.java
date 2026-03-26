@@ -1,25 +1,43 @@
+// Kevin Tran
+// Medication.java
 package hospital;
 
+/* Medication class is used to get information about medications such as medication names, medication costs, and whether insurance is provided. */
 public class Medication implements Billable {
-    private String medName;
+    // Declare variables
+    private String medicationName;
+
     private int unitPrice;
+
     private int quantity;
 
-    public Medication(String medName, int unitPrice, int quantity) {
-        this.medName = medName;
+    //Constructor for a new Medication
+    public Medication(String medicationName, int unitPrice, int quantity) {
+        this.medicationName = medicationName;
         this.unitPrice = unitPrice;
         this.quantity = quantity;
     }
 
-    @Override
-    public int getCost() { return unitPrice * quantity; }
+    // Get the total cost
+    public int getCost() {
+        return unitPrice * quantity;
+    }
 
-    @Override
-    public String getDescription() { return medName; }
+    // Get the Description
+    public String getDescription() {
+        return "Medication " + medicationName + " | Quantity: "  + quantity;
+    }
+    // From billable.java contract
+    public String getCode() {
+        return medicationName.toUpperCase();
+    }
 
-    @Override
-    public String getCode() { return medName.toUpperCase().replace(" ", "_"); }
+    public String getBaseCost() {
+        return "Medication: " + medicationName + "| Total: $" + getCost();
+    }
 
-    @Override
-    public boolean isCoveredByInsurance() { return false; }
+    public boolean isCoveredByInsurance() {
+        return true;
+    }
+
 }

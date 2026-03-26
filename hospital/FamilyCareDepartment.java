@@ -8,11 +8,17 @@ public class FamilyCareDepartment extends Department {
         this.dailyAppointmentLimit = dailyAppointmentLimit;
     }
 
-    public void bookCheckup(Appointment a) {}
+    public void bookCheckup(Appointment a) {
+        System.out.println("Checkup Booked For Appointment: " + a.getDateTime());
+    }
 
     @Override
-    public boolean canAcceptPatient(Patient p) { return true; }
+    public boolean canAcceptPatient(Patient p) {
+        return true;
+    }
 
     @Override
-    public String getDepartmentType() { return "FamilyCare"; }
+    public String getDepartmentType() {
+        return "FamilyCare";
+    }
 }
