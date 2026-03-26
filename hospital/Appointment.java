@@ -28,11 +28,50 @@ public class Appointment {
         this.status = Status.SCHEDULED;
     }
 
-    public LocalDateTime getDateTime() { return dateTime; }
-    public void setDateTime(LocalDateTime dateTime) throws SchedulingConflictException {}
-    public void cancel(String reason) {}
-    public void complete() {}
-    public void reschedule(LocalDateTime newDateTime) throws SchedulingConflictException {}
-    public boolean matches(String personId) { return false; }
-    public void changeProvider(StaffMember newProvider) {}
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public void cancel(String reason) {
+        this.status = Status.CANCELLED;
+        System.out.println("Appointment " + appointmentId + " cancelled. Reason: " + reason);
+    }
+
+    public void complete() {
+        this.status = Status.COMPLETED;
+        System.out.println("Appointment " + appointmentId + " completed.");
+    }
+
+    public void reschedule(LocalDateTime newDateTime) {
+        this.dateTime = newDateTime;
+    }
+
+    public boolean matches(String personId) {
+        return patient.getPatientId().equals(personId)
+                || provider.getEmployeeId().equals(personId);
+    }
+
+    public void changeProvider(StaffMember newProvider) {
+        this.provider = newProvider;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public String getAppointmentId() {
+        return appointmentId;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public StaffMember getProvider() {
+        return provider;
+    }
 }
