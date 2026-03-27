@@ -195,4 +195,7 @@ direction LR
 # Usage
 
 # Contributions
-
+- Jhomar Luna: HospitalSystem Class, Appointment Class, StaffMember Class
+- Thao Huynh: Department Abstract Class, Patient Class
+- Kevin Tran: VisitSummary Class, Billable Interface, SurgeryBill Class, Medication Class
+- Zahid Khan: SurgeryDepartment Class, FamilyCare Department Class, Pharmacy Class
