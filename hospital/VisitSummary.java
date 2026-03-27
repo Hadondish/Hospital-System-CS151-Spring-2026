@@ -23,7 +23,7 @@ public class VisitSummary {
 
 public VisitSummary(String visitId, String patient) {
     this.visitId = visitId;
-    this.patientId = patientId;
+    this.patientId = patient;
     this.billable_charges = new ArrayList<>();
 
     }
