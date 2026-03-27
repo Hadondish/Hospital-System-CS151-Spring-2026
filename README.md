@@ -32,18 +32,24 @@ direction LR
 	    -capacity: int
 	    -patients: List~Patient~
 	    -staff: List~StaffMember~
+	    +getDeptId() String
+	    +setDeptId(deptId: String) void
+	    +getName() String
+	    +setName(name: String) void
+	    +getCapacity() int
+	    +setCapacity(capacity: int) void
+	    +getPatients() List~Patient~
+	    +getStaff() List~StaffMember~
 	    +addPatient(p: Patient) void
 	    +removePatient(p: Patient) void
-	    +movePatient(p: Patient, d: Department)
+	    +movePatient(p: Patient, d: Department) void
 	    +hireStaff(s: StaffMember) void
 	    +removeStaff(s: StaffMember) void
-	    +moveStaff(s: StaffMember, d: Department)
+	    +moveStaff(s: StaffMember, d: Department) void
 	    +isFull() boolean
-	    +getCapacity() String
-	    +getPatients() String
-	    +getStaff() String
 	    +canAcceptPatient(p: Patient) boolean
 	    +getDepartmentType() String
+	    +toString() String
     }
 
     class Pharmacy {
@@ -91,20 +97,33 @@ direction LR
     class Patient {
 	    -patientId: String
 	    -dateOfBirth: String
-	    -status: enum
+	    -status: PatientStatus
 	    -assignedDepartment: Department
 	    -visitSummaries: List~VisitSummary~
-	    +getPatientID() String
+	    +getPatientId() String
+	    +setPatientId(patientId: String) void
 	    +getDateOfBirth() String
-	    +getStatus() String
-	    +getAssignedDepartment() String
-	    +getVisitSummaries() String
+	    +setDateOfBirth(dateOfBirth: String) void
+	    +getStatus() PatientStatus
+	    +setStatus(status: PatientStatus) void
+	    +getAssignedDepartment() Department
+	    +setAssignedDepartment(assignedDepartment: Department) void
+	    +getVisitSummaries() List~VisitSummary~
+	    +setVisitSummaries(visitSummaries: List~VisitSummary~) void
 	    +admitTo(dept: Department) void
 	    +discharge() void
 	    +transferTo(newDept: Department) void throws FullCapacityException
 	    +addVisitSummary(vs: VisitSummary) void
 	    +viewVisitSummaries() String
 	    +toString() String
+    }
+
+    class PatientStatus {
+	    <<enumeration>>
+	    REGISTERED
+	    ADMITTED
+	    TRANSFERRED
+	    DISCHARGED
     }
 
     class StaffMember {
@@ -178,7 +197,7 @@ direction LR
     HospitalSystem "1" o-- "*" Appointment
 	HospitalSystem "1" o-- "*" Patient
 	HospitalSystem "1" o-- "*" StaffMember
-	HospitalSystem "1" o-- "*" Department	
+	HospitalSystem "1" o-- "*" Department
     Department "1" o-- "*" Patient : assigned to
     Department "1" o-- "*" StaffMember : assigns
     Department <|-- Pharmacy
@@ -192,6 +211,7 @@ direction LR
 	Appointment "*" --> "1" StaffMember : with
 	Appointment "*" --> "1" Department : in
     Patient *-- VisitSummary : has
+    Patient --> PatientStatus
     VisitSummary o-- Billable
     Billable <.. Medication
     Billable <.. SurgeryBill
