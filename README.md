@@ -192,6 +192,25 @@ direction LR
 ```
 # Installation Instructions
 
+1. Clone the repository:
+
+```bash
+git clone https://github.com/Hadondish/Hospital-System-CS151-Spring-2026.git
+```
+
+2. Navigate into the project directory:
+
+```bash
+cd Hospital-System-CS151-Spring-2026
+```
+
+3. Compile the Java source files:
+
+```bash
+javac hospital/*.java
+```
+
+
 # Usage
 
 # Contributions
