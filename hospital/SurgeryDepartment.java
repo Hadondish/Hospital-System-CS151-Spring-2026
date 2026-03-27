@@ -1,7 +1,5 @@
 package hospital;
 
-import java.util.List;
-
 public class SurgeryDepartment extends Department {
 
     private int operatingRooms;
@@ -11,13 +9,54 @@ public class SurgeryDepartment extends Department {
         this.operatingRooms = operatingRooms;
     }
 
-    public void administerDrugs(Patient p, Medication m) {}
+    public int getOperatingRooms() {
+        return operatingRooms;
+    }
 
-    public void generateBill(Patient p) {}
+    public void setOperatingRooms(int operatingRooms) {
+        this.operatingRooms = operatingRooms;
+    }
 
-    public void completeSurgery(Patient p) {}
+    public void administerDrugs(Patient p, Medication m) {
+        if (p == null || m == null) {
+            System.out.println("Patient or medication is null.");
+            return;
+        }
 
-    public void assignOperatingRoom(Appointment a) {}
+        System.out.println("Administering " + m.getDescription() + " to patient " + p.getPatientID());
+    }
+
+    public void generateBill(Patient p) {
+        if (p == null) {
+            System.out.println("Patient is null.");
+            return;
+        }
+
+        System.out.println("Generating surgery bill for patient " + p.getPatientID());
+    }
+
+    public void completeSurgery(Patient p) {
+        if (p == null) {
+            System.out.println("Patient is null.");
+            return;
+        }
+
+        System.out.println("Surgery completed for patient " + p.getPatientID());
+    }
+
+    public void assignOperatingRoom(Appointment a) {
+        if (a == null) {
+            System.out.println("Appointment is null.");
+            return;
+        }
+
+        if (operatingRooms <= 0) {
+            System.out.println("No operating rooms available.");
+            return;
+        }
+
+        System.out.println("Assigned operating room for appointment at " + a.getDateTime());
+    }
 
     @Override
     public String getDepartmentType() {
