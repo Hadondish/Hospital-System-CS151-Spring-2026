@@ -18,23 +18,23 @@ public class VisitSummary {
 
     private String patientId;
     
-    private List<billable> billable_charges;
+    private List<Billable> billable_charges;
 
 
 public VisitSummary(String visitId, String patient) {
     this.visitId = visitId;
-    this.patientId = patientId;
+    this.patientId = patient;
     this.billable_charges = new ArrayList<>();
 
     }
 
-public void addCharge(billable item) {
+public void addCharge(Billable item) {
     if(item != null) {
         billable_charges.add(item);
     }
 }
 
-public boolean removeCharge(billable bill) {
+public boolean removeCharge(Billable bill) {
     return billable_charges.remove(bill);
 }
 
@@ -42,7 +42,7 @@ public boolean removeCharge(billable bill) {
 public int getTotalCost() {
 
     int total_cost = 0;
-    for (billable item : billable_charges) {
+    for (Billable item : billable_charges) {
         total_cost += item.getCost();
     }
     return total_cost;
@@ -59,7 +59,7 @@ public String toString() {
     sb.append("Patient ID: ").append(patientId).append("\n");
     sb.append("Billable Charges: \n");
 
-    for(billable b: billable_charges) {
+    for(Billable b: billable_charges) {
         sb.append(" -").append(b.getBaseCost()).append("\n");
 
     }
