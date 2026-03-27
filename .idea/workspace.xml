@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8910b85-b616-4331-82fc-90d7f2e7cbdc" name="Changes" comment="" />
+    <list default="true" id="b8910b85-b616-4331-82fc-90d7f2e7cbdc" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,7 +32,6 @@
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;thao-project2-progress&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/iris/Hospital-System-CS151-Spring-2026&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -60,7 +61,10 @@
       <workItem from="1774208063838" duration="6000" />
       <workItem from="1774566901970" duration="54000" />
       <workItem from="1774566963047" duration="1000" />
-      <workItem from="1774566968655" duration="3193000" />
+      <workItem from="1774566968655" duration="3660000" />
+      <workItem from="1774646156801" duration="72000" />
+      <workItem from="1774646233757" duration="30000" />
+      <workItem from="1774646266309" duration="30000" />
     </task>
     <servers />
   </component>
