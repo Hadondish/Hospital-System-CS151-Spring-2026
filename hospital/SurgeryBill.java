@@ -19,7 +19,7 @@ public class SurgeryBill implements Billable {
     private int anesthesiaFee;
 
 
-public surgeryBill(Map<String, Integer> surgeonNameCost, String procedure, int surgeonFee, int anesthesiaFee, boolean anesthesia) {
+public SurgeryBill(Map<String, Integer> surgeonNameCost, String procedure, int surgeonFee, int anesthesiaFee, boolean anesthesia) {
     this.procedure = procedure;
     this.surgeonNameCost = surgeonNameCost;
     this.anesthesiaFee = anesthesiaFee;
