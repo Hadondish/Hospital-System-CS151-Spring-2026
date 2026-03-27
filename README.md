@@ -227,7 +227,7 @@ direction LR
 
 # Installation Instructions
 
-1. Clone the repository:
+1. Clone the repository on GitHub:
 
 ```bash
 git clone https://github.com/Hadondish/Hospital-System-CS151-Spring-2026.git
