@@ -212,6 +212,7 @@ direction LR
 	Appointment "*" --> "1" Department : in
     Patient *-- VisitSummary : has
     Patient --> PatientStatus
+	Patient --> Department
     VisitSummary o-- Billable
     Billable <.. Medication
     Billable <.. SurgeryBill
