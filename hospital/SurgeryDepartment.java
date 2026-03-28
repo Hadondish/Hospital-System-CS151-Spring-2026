@@ -23,7 +23,7 @@ public class SurgeryDepartment extends Department {
             return;
         }
 
-        System.out.println("Administering " + m.getDescription() + " to patient " + p.getPatientID());
+        System.out.println("Administering " + m.getDescription() + " to patient " + p.getPatientId());
     }
 
     public void generateBill(Patient p) {
@@ -32,7 +32,7 @@ public class SurgeryDepartment extends Department {
             return;
         }
 
-        System.out.println("Generating surgery bill for patient " + p.getPatientID());
+        System.out.println("Generating surgery bill for patient " + p.getPatientId());
     }
 
     public void completeSurgery(Patient p) {
@@ -41,7 +41,7 @@ public class SurgeryDepartment extends Department {
             return;
         }
 
-        System.out.println("Surgery completed for patient " + p.getPatientID());
+        System.out.println("Surgery completed for patient " + p.getPatientId());
     }
 
     public void assignOperatingRoom(Appointment a) {
