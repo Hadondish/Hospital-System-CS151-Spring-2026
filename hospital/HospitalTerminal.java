@@ -144,7 +144,7 @@ public class HospitalTerminal {
             case 1 -> registerPatient();
             case 2 -> findPatient();
             case 3 -> admitPatient();
-            case 4 -> dischargePatient();
+            case 4 -> dischargePatient(); 
             case 5 -> transferPatient();
             case 6 -> addVisitSummary();
             case 7 -> viewVisitSummaries();
@@ -386,6 +386,7 @@ public class HospitalTerminal {
             StaffMember s = system.findStaff(empId);
             s.terminateEmployment();
             System.out.println(s.getName() + " employment terminated.");
+            system.fireStaff(empId);
         } catch (NotFoundException e) {
             System.out.println(e.getMessage());
         }

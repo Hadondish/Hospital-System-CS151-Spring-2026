@@ -74,6 +74,18 @@ public class HospitalSystem {
         }
     }
 
+    public void fireStaff(String employeeId) {
+        if (!staffById.containsKey(employeeId)) {
+            System.out.println("Staff member with ID " + employeeId + " not found. Cannot fire.");
+            return;
+        }
+
+        StaffMember s = staffById.get(employeeId);
+        s.terminateEmployment();
+        staffById.remove(employeeId);
+        System.out.println("Staff member with ID " + employeeId + " has been fired.");
+    }
+
     // Schedules a new appointment, ensuring there are no scheduling conflicts for the provider and that the appointment ID is unique
     public void scheduleAppointment(Appointment a) throws SchedulingConflictException {
         for (Appointment existing : appointmentsById.values()) {
