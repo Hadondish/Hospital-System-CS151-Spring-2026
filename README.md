@@ -329,6 +329,26 @@ Find History of System Report
 Click 6. System Report from main menu
 
 
+
+
+
+--------------------------------------
+
+ID Terminologies
+
+
+ID are 4 character strings in length, starting with the first letter of description, then followed by numerical values.
+
+Patient ID: Starts with P, example - (P001, P002, etc)
+Department ID: Starts with D, example - (D001, D002, etc)
+Appointment ID: Starts with A, example - (A001, A002, etc)
+Employee ID: Starts with E, example - (E001, E002, etc).
+
+Departments are 
+Surgery, Family Care, and Pharmacy for example.
+
+Medications are the name of medication, such as Ibuprofen.
+
 # Contributions
 - Jhomar Luna: HospitalSystem Class, Appointment Class, StaffMember Class
 - Thao Huynh: Department Abstract Class, Patient Class
