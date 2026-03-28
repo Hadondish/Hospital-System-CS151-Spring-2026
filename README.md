@@ -2,6 +2,27 @@
 
 # Overview
 
+This project is a Hospital management system containing distinct classes that function together through object oriented design principles. There are 3 department types, Surgery, Family Care, and Pharmacy, which are inherited from the abstract Department class. Patients are also registered, admitted and transferred from departments, while also being discharged. From a management point of view, staff members of the hospital can be hired, removed, and assigned to different departments of the hospital. Appointments can be scheduled, rescheduled, completed, and cancelled too. 
+
+The 3 Exceptions are handled are
+-FullCapacityException, which is thrown when the system reaches its maximum capacity.
+-NotFoundException, which is thrown when something in the system can't be found by the ID.
+-SchedulingConflictException, which is thrown when scheduling an appointment, there is already
+another booking at the same date and time.
+
+
+The billable interface is implemented through Medication and surgeryBill, utilizing polymorphism to store different forms of charges such as insurance costs and surgery costs. Anesthesia is also taken into consideration for surgery costs as well as if insurance is offered depending on costs. System Report on the Main menu can showcase high level overview of data collection. 
+
+Exit functionality is handled through readString() and readInt():
+
+
+
+-readString() checks for exit every time the program asks the user for a text input.
+
+
+-readInt() checks for exit every time the program asks the user for a number.
+
+
 # Design
 ```mermaid
 classDiagram
@@ -248,8 +269,68 @@ javac hospital/*.java
 
 # Usage
 
+Start by compiling all files with:
+
+
+// Compile files
+
+javac hospital/*.java 
+
+// Run the main terminal
+
+java hospital.HospitalTerminal
+
+Once presented with main menu, run workflows.
+
+
+══════════════ MAIN MENU ══════════
+ 1. Department Management
+ 2. Patient Management
+ 3. Staff Management
+ 4. Appointment Management
+ 5. Pharmacy Management
+ 6. System Report
+ 0. Exit
+
+    
+══════════════════════════════════
+
+Example Workflows:
+
+Scheduling an Appointment
+
+
+Click 4.
+
+Click 1. Schedule Appointment
+
+Enter Appointment ID,
+Type,
+Data,
+Patient ID,
+Provider ID,
+Department.
+
+
+Rescheduling an Appointment
+Click 4
+Click 5. Reschedule Appointment
+
+VisitSummary
+Click on 2. Patient Management
+Click on 6. Add Visit Summary
+Enter Patient ID,
+Visit ID,
+Add correct medical charges
+
+Declare Yes or No if there was anesthesia involved in the surgery or not
+
+Find History of System Report
+Click 6. System Report from main menu
+
+
 # Contributions
 - Jhomar Luna: HospitalSystem Class, Appointment Class, StaffMember Class
 - Thao Huynh: Department Abstract Class, Patient Class
-- Kevin Tran: VisitSummary Class, Billable Interface, SurgeryBill Class, Medication Class
+- Kevin Tran: VisitSummary Class, Billable Interface, SurgeryBill Class, Medication Class, Hospital Terminal (User Interface)
 - Zahid Khan: SurgeryDepartment Class, FamilyCare Department Class, Pharmacy Class
