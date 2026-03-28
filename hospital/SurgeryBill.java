@@ -53,6 +53,11 @@ public boolean isCoveredByInsurance() {
     return getCost() <= 15000;
     }
 
+// Get Code
+public String getCode() {
+    return procedure.toUpperCase();
+}
+
 // Get the cost before the total amount
 public String getBaseCost(){
     return "Surgery: " + procedure + "| Total Amount: $" + getCost();
