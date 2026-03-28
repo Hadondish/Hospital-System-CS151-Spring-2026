@@ -38,7 +38,7 @@ public class StaffMember {
             throw new IllegalStateException("Staff member is already assigned to a department.");
         }
         dept.hireStaff(this);
-        setDepartment(department);
+        setDepartment(dept);
     }
 
     // Removes the staff member from their current department, ensuring they are currently assigned to one
