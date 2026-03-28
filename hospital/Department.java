@@ -201,6 +201,7 @@ public abstract class Department {
 
         if (!staff.contains(s)) {
             staff.add(s);
+            s.setDepartment(this);
         }
     }
 
