@@ -60,9 +60,11 @@ public String getCode() {
 
 // Get the cost before the total amount
 public String getBaseCost(){
-    return "Surgery: " + procedure + "| Total Amount: $" + getCost();
+    return "Surgery: " + procedure + " | Anesthesia: " + (anesthesia ? "Yes ($" + anesthesiaFee + ")" : "No") + " | Total Amount: $" + getCost();
 }
 }
+
+
 
 
 
